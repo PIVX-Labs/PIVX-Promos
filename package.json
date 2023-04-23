@@ -1,0 +1,20 @@
+{
+  "name": "pivx-promos",
+  "version": "0.1.0",
+  "description": "A decentralised, extensible and UX-friendly blockchain promo-code system.",
+  "main": "index.js",
+  "type":"module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PIVX-Labs/PIVX-Promos.git"
+  },
+  "author": "JSKitty",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PIVX-Labs/PIVX-Promos/issues"
+  },
+  "homepage": "https://github.com/PIVX-Labs/PIVX-Promos#readme"
+}
