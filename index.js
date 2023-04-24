@@ -107,7 +107,7 @@ export function encodePrivkey(pkBytes, privatePrefix = 212) {
     writeToUint8(keyWithChecksum, checksum, pkNetBytesLen);
 
     // Return both the raw bytes and the WIF format
-    return { bytes: pkNetBytes, wif: to_b58(keyWithChecksum) };
+    return { bytes: pkBytes, wif: to_b58(keyWithChecksum) };
 }
 
 /**
