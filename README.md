@@ -22,11 +22,11 @@ PIVX Promos avoid the pitfalls of [Brain Wallets](https://www.coindesk.com/tech/
 
 ## APIs
 
-- `class` **PromoCode**: This is the main class of the library. It is used to create new promo codes. It accepts a single string parameter when creating a new instance of the class, which can either be a UUID-like code string, or human readable text.
+- `class` **PromoCode(code: string)**: This is the main class of the library. It is used to create new promo codes. It accepts a single string parameter when creating a new instance of the class, which can either be a UUID-like code string, or human readable text.
 - - `EventEmitter` **progressEmitter**: An event emitter that is called during the process of deriving a Promo Code's private key. It emits the `deriveProgress` event containing an object with two properties:
 - - - `number` **progress**: which represents the percentage completion of the process.
 - - - `number` **eta**: which represents the estimated seconds remaining until completion.
-- - `async function` **derivePrivateKey**: Starts the derivation of a Promo Code's private key. Once the private key has been derived, it returns an object containing the private key in raw bytes and WIF format:
+- - `async function` **derivePrivateKey(privatePrefix: number)**: Starts the derivation of a Promo Code's private key, it accepts an optional byte number for the coin's private key prefix. Once the private key has been derived, it returns an object containing the private key in raw bytes and WIF format:
 - - - `Uint8Array(32)` **bytes**: The unprocessed bytes of the Promo Code's private key.
 - - - `string` **wif**: The network-encoded WIF key of the Promo Code.
 
@@ -59,3 +59,4 @@ promo.derivePrivateKey().then(cWallet => {
 ## Implementation Notes:
 - The library user is expected to handle Public Key derivation themselves.
 - The library user must take care of Promo Code backwards compatibility upon `Target` primitive updates.
+- The library user may use another coin/network by specifying a Prefix Byte in `.derivePrivateKey(byte)`.

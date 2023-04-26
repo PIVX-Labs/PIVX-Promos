@@ -87,7 +87,7 @@ export function dSHA256(data) {
  * @param {number} privatePrefix - One-byte WIF network prefix
  * @returns {PromoKey}
  */
-export function encodePrivkey(pkBytes, privatePrefix = 212) {
+export function encodePrivkey(pkBytes, privatePrefix) {
     // Private Key Constants
     const pkNetBytesLen = pkBytes.length + 2;
     const pkNetBytes = new Uint8Array(pkNetBytesLen);
@@ -139,8 +139,9 @@ export class PromoCode {
 
     /**
      * Derive a private key from the Promo Code (for Creation or Redemption)
+     * @param {number} - The private network byte to use, default is PIVX Mainnet
      */
-    async derivePrivateKey() {
+    async derivePrivateKey(privatePrefix = 212) {
         // Convert the string 'Promo Code' to a Uint8Array byte representation
         let arrByteCode = (new TextEncoder()).encode(this.code);
 
@@ -175,8 +176,8 @@ export class PromoCode {
             }
         }
 
-        // Encode the millionth hash as a WIF Private Key (the 'wallet' of the Promo Code)
-        const cWallet = encodePrivkey(arrByteCode);
+        // Encode the final hash as a WIF Private Key (the 'wallet' of the Promo Code)
+        const cWallet = encodePrivkey(arrByteCode, privatePrefix);
 
         // Return it!
         return cWallet;
