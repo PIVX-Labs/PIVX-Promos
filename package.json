@@ -1,6 +1,6 @@
 {
   "name": "pivx-promos",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A decentralised, extensible and UX-friendly blockchain promo-code system.",
   "main": "index.js",
   "type":"module",
